@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LIRI</title>
+    <script>
+      (function () {
+        var saved = localStorage.getItem("liri-theme");
+        var theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="particulas" aria-hidden="true"></canvas>
+
+    <button
+      type="button"
+      id="btn-tema"
+      class="btn-tema"
+      aria-pressed="false"
+      aria-label="Activar modo oscuro"
+    >
+      <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M21 14.3A8.5 8.5 0 0 1 9.7 3a8.6 8.6 0 1 0 11.3 11.3Z"
+        />
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M12 18.5A6.5 6.5 0 1 1 18.5 12 6.5 6.5 0 0 1 12 18.5ZM12 1.5a1 1 0 0 1 1 1V5a1 1 0 0 1-2 0V2.5a1 1 0 0 1 1-1Zm0 16a1 1 0 0 1 1 1v2.5a1 1 0 0 1-2 0V18.5a1 1 0 0 1 1-1ZM1.5 12a1 1 0 0 1 1-1H5a1 1 0 0 1 0 2H2.5a1 1 0 0 1-1-1Zm16 0a1 1 0 0 1 1-1h2.5a1 1 0 0 1 0 2H18.5a1 1 0 0 1-1-1ZM4.2 4.2a1 1 0 0 1 1.4 0l1.8 1.8a1 1 0 0 1-1.4 1.4L4.2 5.6a1 1 0 0 1 0-1.4Zm12.4 12.4a1 1 0 0 1 1.4 0l1.8 1.8a1 1 0 1 1-1.4 1.4l-1.8-1.8a1 1 0 0 1 0-1.4ZM19.8 4.2a1 1 0 0 1 0 1.4l-1.8 1.8a1 1 0 0 1-1.4-1.4l1.8-1.8a1 1 0 0 1 1.4 0ZM7.4 16.6a1 1 0 0 1 0 1.4l-1.8 1.8a1 1 0 0 1-1.4-1.4l1.8-1.8a1 1 0 0 1 1.4 0Z"
+        />
+      </svg>
+    </button>
+
+    <main>
+      <section id="vista-landing" class="vista vista-landing" aria-label="Búsqueda">
+        <div class="stack stack-landing">
+          <!-- TODO: si falta logo.png, colocar la placa oficial LIRI en esta ruta -->
+          <img class="logo logo-landing" src="logo.png" alt="LIRI" width="120" height="115" />
+
+          <p class="frase" aria-label="“Creer que algo es real hace que sea real”">
+            <span id="frase-texto" aria-hidden="true"></span
+            ><span class="frase-cursor" id="frase-cursor" aria-hidden="true" hidden>▍</span>
+          </p>
+
+          <form id="form-busqueda" class="form-busqueda" novalidate>
+            <label class="visually-hidden" for="telefono">Numero de telefono</label>
+            <input
+              id="telefono"
+              name="telefono"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="Ingresa el numero de telefono"
+              aria-describedby="error-telefono"
+            />
+            <button type="submit" class="btn-buscar">Buscar</button>
+            <p id="estado-busqueda" class="estado-busqueda" role="status" aria-live="polite" hidden></p>
+            <p id="error-telefono" class="error" role="alert" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section
+        id="vista-resultados"
+        class="vista vista-resultados"
+        aria-label="Resultados de búsqueda"
+        hidden
+        inert
+      >
+        <div class="stack stack-resultados">
+          <img class="logo logo-resultados" src="logo.png" alt="LIRI" width="80" height="77" />
+
+          <header class="resultados-header">
+            <h1 id="titulo-resultados" tabindex="-1">Resultados de búsqueda</h1>
+            <p id="resultado-telefono" class="resultado-telefono"></p>
+            <p id="resultado-aviso" class="resultado-aviso" hidden></p>
+          </header>
+
+          <article class="card">
+            <h2>Compañía</h2>
+            <p id="resultado-compania" class="card-valor"></p>
+          </article>
+
+          <article class="card">
+            <h2>Deudas pendientes</h2>
+            <ul id="lista-deudas" class="lista-deudas"></ul>
+          </article>
+
+          <article class="card">
+            <h2>Redes sociales</h2>
+            <div id="lista-redes" class="lista-redes"></div>
+            <p class="nota">Este bloque puede variar</p>
+          </article>
+
+          <button type="button" id="btn-volver" class="btn-volver">Volver a buscar</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="api.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
