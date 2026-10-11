@@ -2,6 +2,7 @@
 ### ¿Que es Liri?
 
 Liri es una herramienta Open-source que tiene como finalidad proporcionar información de un número de Télefono. (503)
+<a href="https://github.com/Eduardx-2/liri/blob/main/LiriPag/Liri.png"><img alt="https://github.com/Eduardx-2/liri/blob/main/LiriPag/Liri.png" src="https://github.com/Eduardx-2/liri/blob/main/LiriPag/Liri.png"></a>
 
 ### ¿Cómo funciona Liri?
 
