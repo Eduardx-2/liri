@@ -21,4 +21,8 @@ Liri es una herramienta Open-source que tiene como finalidad proporcionar inform
 > [!Scraping]
 > Tenga en cuenta en realizar uso de una vpn, ya que los servicios de instagram puede tomarlo a usted como un bot.
 
-Sí quiere saber más sobre como funciona Liri, puede consultar info/Liri.md.
+> # Información:
+	- Datos de deudas.
+	- Número activo en Redes.(Facebook,Instagram)
+
+Sí quiere saber más sobre como funciona Liri, puede consultar Liri BACKEND.md.
