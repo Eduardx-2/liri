@@ -17,7 +17,37 @@ Liri es una herramienta Open-source que tiene como finalidad proporcionar inform
 	- Instagram
 	- Facebook
 	- Más redes(Próximo)
+ 
+# Requisitos del sistema
 
+- Python 3
+- Firefox instalado (lo usa Selenium para el scraping)
+- `geckodriver`: no hace falta instalarlo a mano, Selenium Manager lo descarga solo la primera vez.
+
+## Entorno virtual (recomendado)
+
+```bash
+cd ~/Documentos/Liri
+python3 -m venv .venv
+source .venv/bin/activate
+```
+## Instalar dependencias
+
+```bash
+pip install -r liri-back/requirements.txt
+pip install -r LiriPag/requirements.txt
+```
+
+- `liri-back/requirements.txt`: `flask`, `requests`, `selenium`, `regex`
+- `LiriPag/requirements.txt`: `flask`
+
+# Ejecutar
+
+La primera vez, dale permiso de ejecución al script:
+
+```bash
+chmod +x start.sh
+```
 > [!Scraping]
 > Tenga en cuenta en realizar uso de una vpn, ya que los servicios de instagram puede tomarlo a usted como un bot.
 
